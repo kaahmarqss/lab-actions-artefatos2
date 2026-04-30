@@ -32,3 +32,19 @@ jobs:
         with:
           name: meus-relatorios-oficiais
           path: saida_build/
+
+  job_auditoria:
+    runs-on: ubuntu-latest
+    needs: job_gerador
+
+    steps:
+      - name: Baixar artefatos
+        uses: actions/download-artifact@v4
+        with:
+          name: meus-relatorios-oficiais
+
+      - name: Listar arquivos
+        run: ls -R
+
+      - name: Mostrar conteúdo do relatório
+        run: cat relatorio1.txt
