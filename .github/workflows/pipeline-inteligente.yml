@@ -1,0 +1,25 @@
+name: Pipeline Inteligente
+
+on:
+  workflow_dispatch:
+
+  schedule:
+    - cron: '0 2 * * *'
+
+  push:
+    branches:
+      - 'feature/**'
+    paths:
+      - 'src/**'
+      - '!src/docs/**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v4
+
+      - name: Exemplo de execução
+        run: echo "Pipeline executado com sucesso!"
